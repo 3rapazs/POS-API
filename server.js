@@ -10,6 +10,8 @@ app.use(cors());
 const userController = require("./controllers/UserController");
 const foodTypeController = require("./controllers/FoodTypeController");
 const foodSizeController = require("./controllers/FoodSizeController");
+const testeController = require("./controllers/TesteController");
+
 
 app.post('/api/user/signIn',(req,res) => {
     userController.signIn(req,res)
@@ -45,6 +47,22 @@ app.put("/api/foodType/update", (req, res) =>
 
 app.put("/api/foodSize/update", (req, res) =>
     foodSizeController.update(req, res)
+  );
+
+  app.post("/api/teste/create", (req, res) =>
+    testeController.create(req, res)
+  );  
+
+  app.get("/api/teste/list", (req, res) =>
+    testeController.list(req, res)
+  );
+
+  app.delete('/api/teste/remove/:id',(req,res) => {
+    testeController.remove(req,res)
+})
+
+app.put("/api/teste/update", (req, res) =>
+  testeController.update(req, res)
   );
 
 app.listen(3001, ()=> {
